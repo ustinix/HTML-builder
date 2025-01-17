@@ -6,5 +6,5 @@ console.log(pathTxt);
 const readStream = fs.createReadStream(pathTxt);
 
 readStream.on('data', (chunk) => {
-    console.log(chunk.toString());
-})
+  console.log(chunk.toString());
+});
