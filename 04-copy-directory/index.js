@@ -8,6 +8,16 @@ async function copyFile(sourcePath, destinationPath) {
    try {
      fspromises.mkdir(destinationPath, { recursive: true });
      fspromises.readdir(sourcePath).then(async filenames => {
+        const files = await fs.promises.readdir(sourcePath);
+        const filesCopy = await fs.promises.readdir(destinationPath);
+        for (const file of filesCopy) {
+            if (!files.includes(file)) {
+              const filePathToRemove = path.join(destinationPath, file);
+              await fs.promises.unlink(filePathToRemove);
+              console.log(`File ${file} has been removed from files-copy.`);
+            }
+          }
+
          for (let filename of filenames) {
              const filePath = path.join(sourcePath, filename);
              const fileCopyPath = path.join(destinationPath, filename);
