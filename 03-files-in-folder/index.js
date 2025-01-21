@@ -21,7 +21,7 @@ fs.readdir(pathFolder, (err, files) => {
         console.log(
           fileName + ' - ' + fileExtension.slice(1) + ' - ' + fileSize,
         );
-      };
+      }
     });
   });
 });
